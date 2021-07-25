@@ -1,0 +1,23 @@
+<turbo-stream action="append" target="messages">
+    <template>
+        <p>{{ message.message }}</p>
+    </template>
+</turbo-stream>
+
+{# Mise à jour du formulaire pour vider les champs #}
+<turbo-stream action="update" target="message_form">
+    <template>
+        {% include 'home/partials/_form.html.twig' with {
+            form: form,
+        } only %}
+    </template>
+</turbo-stream>
+
+{# Ajout d'un "flash message" au dessus du formulaire, dans la frame "contact_form" #}
+<turbo-stream action="prepend" target="message_form">
+    <template>
+        <p style="font-weight: bold; color: green">Merci pour votre message !</p>
+
+        <hr>
+    </template>
+</turbo-stream>

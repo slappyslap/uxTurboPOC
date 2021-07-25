@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+    <h1>Hello I'm {{ controller_name }}</h1>
+
+    <div class="frame" style="max-height: 80vh; overflow-y:scroll">
+        <turbo-frame id="messages_list" src="{{ path('list_messages') }}">
+            <p>Chargement de la liste des messages...</p>
+        </turbo-frame>
+    </div>
+
+    <turbo-frame id="message_form">
+        {% include 'home/partials/_form.html.twig' with {
+            form: form,
+        } only %}
+    </turbo-frame>
+
+{% endblock %}
